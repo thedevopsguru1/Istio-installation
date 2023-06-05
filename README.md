@@ -58,3 +58,15 @@ kubectl apply -f https://raw.githubusercontent.com/istio/istio/release-1.17/samp
 ```
 # Do the same thing for the rest of adds-on
 https://istio.io/latest/docs/ops/integrations/
+```
+kubectl apply -f https://raw.githubusercontent.com/istio/istio/release-1.17/samples/addons/grafana.yaml
+```
+```
+kubectl apply -f https://raw.githubusercontent.com/istio/istio/release-1.17/samples/addons/jaeger.yaml
+```
+```
+kubectl apply -f https://raw.githubusercontent.com/istio/istio/release-1.17/samples/addons/prometheus.yaml
+```
+```
+kubectl apply -f https://raw.githubusercontent.com/istio/istio/release-1.17/samples/addons/extras/zipkin.yaml
+```
