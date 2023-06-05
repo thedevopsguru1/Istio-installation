@@ -42,6 +42,10 @@ kubectl create namespace istio-ingress
 ```
 helm install istio-ingress istio/gateway -n istio-ingress --wait
 ```
+## Label the namespace of you application
+```
+kubectl label namespace yournamespacehere istio-injection=enabled
+```
 ### 
 https://artifacthub.io/packages/helm/istio-official/istiod
 ###
