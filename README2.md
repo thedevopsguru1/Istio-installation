@@ -1,43 +1,19 @@
-
 ```
-helm repo add istio https://istio-release.storage.googleapis.com/charts
+istioctl install --set profile=demo
 ```
+### Check what’s installed
 ```
-helm repo update
+kubectl -n istio-system get deploy
 ```
-#### Create the namespace, istio-system, for the Istio components:
+### Display the list of available profiles
 ```
-kubectl create namespace istio-system
+istioctl profile list
 ```
-## Install the Istio base chart which contains cluster-wide Custom Resource Definitions (CRDs) which must be installed prior to the deployment of the Istio control plane
+### The default Istio installation uses automatic sidecar injection. Label the namespace that will host the application with istio-injection=enabled:
 ```
-helm install istio-base istio/base -n istio-system
+kubectl label namespace nshere istio-injection=enabled
 ```
-#### Validate the CRD installation with the helm ls command
+### Uninstall Istio
 ```
-helm ls -n istio-system
-```
-## Install the Istio discovery chart which deploys the istiod service
-```
-helm install istiod istio/istiod -n istio-system --wait
-```
-#### Verify the Istio discovery chart installation
-```
-helm ls -n istio-system
-```
-#### Get the status of the installed helm chart to ensure it is deployed
-```
-helm status istiod -n istio-system
-```
-#### Check istiod service is successfully installed and its pods are running
-```
-kubectl get deployments -n istio-system --output wide
-```
-
-## Install an ingress gateway:
-```
-kubectl create namespace istio-ingress
-```
-```
-helm install istio-ingress istio/gateway -n istio-ingress --wait
+istioctl uninstall --purge
 ```
